@@ -1,4 +1,4 @@
-% ------ DEFINICIÓN DE VARIBLES ------
+% ------ DEFINICIÃ“N DE VARIBLES ------
 
 n = int64(1799); % Puntos verticales
 m = int64(399); % Puntos horizontales
@@ -6,15 +6,15 @@ t = 0; % Tiempo
 A = 1; % Amplitud de la onda
 
 N = 20; % "Discretizacion" espacial. Ver h.
-M = sqrt(2)*N; % "Discretizacion" temporal. Debe ser mayor que N para que sea estable.
-l = 10; % Anchura de las rendijas
+M = sqrt(2)*N; % "Discretizacion" temporal. Debe ser mayor que sqrt(2)*N para que sea estable.
+l = 8; % Anchura de las rendijas
 w = pi*12*10^14; % Frecuencia angular de la onda para lambda=500 nm
-tau = 5/3*10^(-15)/M; % Tiempo discreto, f/M
+tau = 5/3*10^(-15)/M; % Tiempo discreto, T/M
 lambda = 5*10^(-7); % Longitud de onda
 h = lambda/N; % Longitud del espacio discreto (cada "elemento" de la matriz representa un area de hxh)
-r = (N/M)^2; % Debe ser menor que 1 para asegurar la estabilidad del algoritmo
+r = (N/M)^2; % Debe ser menor que 1/2 para asegurar la estabilidad del algoritmo
 
-R = 3; % Número de rendijas
+R = 3; % NÃºmero de rendijas
 
 x = double((0:m))*double(h); % Posiciones en X
 y = double((0:n))*double(h); % Posiciones en Y
@@ -28,7 +28,7 @@ modulo = 2; % Cada cuantos pasos se toma captura
 % -------- EMPIEZA EL PROGRAMA -----------
 
 
-% Comprobamos que r es menor que 1
+% Comprobamos que r es menor que 1/2
 disp(r);
 
 % Mostramos la distancia de Talbot
@@ -156,5 +156,5 @@ close(writerObj);
 
 % 'Video.avi' will be created in the folder that contains the code.
 
-disp("¡Terminado!");
+disp("Â¡Terminado!");
 
