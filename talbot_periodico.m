@@ -1,12 +1,12 @@
 % ------ DEFINICIÓN DE VARIBLES ------
 
-n = int64(1799); % Puntos verticales
-m = int64(399); % Puntos horizontales
+n = int64(1800); % Puntos verticales
+m = int64(401); % Puntos horizontales
 t = 0; % Tiempo
 A = 1; % Amplitud de la onda
 
 N = 20; % "Discretizacion" espacial. Ver h.
-M = sqrt(2)*N; % "Discretizacion" temporal. Debe ser mayor que sqrt(2)*N para que sea estable.
+M = ceil(sqrt(2)*N); % "Discretizacion" temporal. Debe ser mayor que sqrt(2)*N para que sea estable.
 l = 8; % Anchura de las rendijas
 w = pi*12*10^14; % Frecuencia angular de la onda para lambda=500 nm
 tau = 5/3*10^(-15)/M; % Tiempo discreto, T/M
@@ -19,7 +19,7 @@ R = 3; % Número de rendijas
 x = double((0:m))*double(h); % Posiciones en X
 y = double((0:n))*double(h); % Posiciones en Y
 contador = 1; % Contador de pasos
-modulo = 2; % Cada cuantos pasos se toma captura
+modulo = 1; % Cada cuantos pasos se toma captura
 
 
 
@@ -77,7 +77,13 @@ fig = figure;
 fig.WindowState = 'maximized';
 colormap('gray');   % set colormap
 imagesc(y,x,u_ahora.'.^2, [0 A^2]);        % draw image and scale colormap to values range
-colorbar; % set colorbar
+ylabel('x (in meters)') % x axis label
+xlabel('z (in meters)') % z axis label
+c = colorbar; % set colorbar
+c.Label.String = 'Intensity of the wave (in W/m^2)'; % label colorbar
+c.Label.Rotation = 270; % to rotate the text
+c.Label.Position(1) = 2.4 * c.Label.Position(1); % to position the label
+set(gca,'FontSize',20);
 drawnow
 frame = getframe(fig);
 im = frame2im(frame);
@@ -123,6 +129,13 @@ for repeticiones = 1:100
         
         imagesc(y,x,u_ahora.'.^2, [0 A^2]);        % draw image and scale colormap to values range
         colorbar; % set colorbar
+        ylabel('x (in meters)') % x axis label
+        xlabel('z (in meters)') % z axis label
+        c = colorbar; % set colorbar
+        c.Label.String = 'Intensity of the wave (in W/m^2)'; % label colorbar
+        c.Label.Rotation = 270; % to rotate the text
+        c.Label.Position(1) = 2.4 * c.Label.Position(1); % to position the label
+        set(gca,'FontSize',20);
         drawnow
         frame = getframe(fig);
         im = frame2im(frame);
