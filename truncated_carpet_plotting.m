@@ -11,7 +11,7 @@ zt = lambda./(1 - sqrt(1 - (lambda./d).^2)); % Talbot distance
 pixel_x = 1080*2;   % Number of pixels in the X direction
 pixel_z = 1920*2;   % Number of pixels in the X direction
 
-destdirectory = [pwd,'\images'];    % Destination directory
+destdirectory = fullfile(pwd,'images');    % Destination directory
 mkdir(destdirectory);
 
 fig = figure();
