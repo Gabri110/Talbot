@@ -65,7 +65,7 @@ for k = 1:length(lambda)
     im = frame2im(frame);
     thisimage = ['d_λ=',num2str(d/lambda(k)),'_w_λ=',num2str(w(k)/lambda(k)),'_carpet.png'];
     fulldestination = fullfile(destdirectory,thisimage);
-    imwrite(im,map,fulldestination);
+    imwrite(im,fulldestination);
 
 end
 
